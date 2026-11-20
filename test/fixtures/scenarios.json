@@ -1,0 +1,17 @@
+{
+  "scenario-wallet.bin": {
+    "description": "Bitcoin-style stack: secp256k1 generator point + SHA-256 IV + Base64 alphabet"
+  },
+  "scenario-legacy.bin": {
+    "description": "Legacy audit case: DES S-box + MD5 T-table + MD5 IV"
+  },
+  "scenario-arx.bin": {
+    "description": "Modern ARX stack: ChaCha20 sigma + Salsa20 sigma"
+  },
+  "scenario-packed.bin": {
+    "description": "32 KB of seeded noise: near-maximal entropy, zero signatures — the packed/encrypted payload case"
+  },
+  "scenario-plaintext.txt": {
+    "description": "Plain ASCII text: low entropy, zero signatures"
+  }
+}

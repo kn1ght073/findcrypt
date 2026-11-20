@@ -1,0 +1,92 @@
+{
+  "aes-sbox": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "637c777bf26b6fc53001672bfed7ab76ca82c97dfa5947f0add4a2af9ca472c0b7fd9326363ff7cc34a5e5f171d8311504c723c31896059a071280e2eb27b27509832c1a1b6e5aa0523bd6b329e32f8453d100ed20fcb15b6acbbe394a4c58cfd0efaafb434d338545f9027f503c9fa851a3408f929d38f5bcb6da2110fff3d2cd0c13ec5f974417c4a77e3d645d197360814fdc222a908846eeb814de5e0bdbe0323a0a4906245cc2d3ac629195e479e7c8376d8dd54ea96c56f4ea657aae08ba78252e1ca6b4c6e8dd741f4bbd8b8a703eb5664803f60e613557b986c11d9ee1f8981169d98e949b1e87e9ce5528df8ca1890dbfe6426841992d0fb054bb16"
+  },
+  "aes-sbox-inverse": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "52096ad53036a538bf40a39e81f3d7fb7ce339829b2fff87348e4344c4dee9cb547b9432a6c2233dee4c950b42fac34e082ea16628d924b2765ba2496d8bd12572f8f66486689816d4a45ccc5d65b6926c704850fdedb9da5e154657a78d9d8490d8ab008cbcd30af7e45805b8b34506d02c1e8fca3f0f02c1afbd0301138a6b3a9111414f67dcea97f2cfcef0b4e67396ac7422e7ad3585e2f937e81c75df6e47f11a711d29c5896fb7620eaa18be1bfc563e4bc6d279209adbc0fe78cd5af41fdda8338807c731b11210592780ec5f60517fa919b54a0d2de57a9f93c99cefa0e03b4dae2af5b0c8ebbb3c83539961172b047eba77d626e169146355210c7d"
+  },
+  "sha256-iv": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "6a09e667bb67ae853c6ef372a54ff53a510e527f9b05688c1f83d9ab5be0cd19"
+  },
+  "sha512-iv": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "6a09e667f3bcc908bb67ae8584caa73b3c6ef372fe94f82ba54ff53a5f1d36f1510e527fade682d19b05688c2b3e6c1f1f83d9abfb41bd6b5be0cd19137e2179"
+  },
+  "sha1-iv": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "67452301efcdab8998badcfe10325476c3d2e1f0"
+  },
+  "md5-iv": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "67452301efcdab8998badcfe10325476"
+  },
+  "md5-t-table": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "d76aa478e8c7b756242070dbc1bdceeef57c0faf4787c62aa8304613fd469501"
+  },
+  "tea-delta": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "9e3779b9"
+  },
+  "chacha-sigma": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "657870616e642033322d62797465206b"
+  },
+  "salsa-sigma": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "657870616e642031362d62797465206b"
+  },
+  "blowfish-p-array": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "243f6a8885a308d313198a2e03707344a4093822299f31d0082efa98ec4e6c89"
+  },
+  "crc32-table": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "77073096ee0e612c990951ba076dc419706af48fe963a5359e6495a30edb883279dcb8a4e0d5e91e97d2d98809b64c2b7eb17cbde7b82d0790bf1d911db71064"
+  },
+  "base64-alphabet": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "4142434445464748494a4b4c4d4e4f505152535455565758595a6162636465666768696a6b6c6d6e6f707172737475767778797a303132333435363738392b2f"
+  },
+  "base64url-alphabet": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "4142434445464748494a4b4c4d4e4f505152535455565758595a6162636465666768696a6b6c6d6e6f707172737475767778797a303132333435363738392d5f"
+  },
+  "secp256k1-generator": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8"
+  },
+  "sm4-fk": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "a3b1bac656aa3350677d9197b27022dc"
+  },
+  "sm4-sbox": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "d690e9fecce13db716b614c228fb2c05"
+  },
+  "des-sbox": {
+    "offset": 256,
+    "patternIndex": 0,
+    "patternHex": "0e040d01020f0b08030a060c05090007"
+  }
+}
