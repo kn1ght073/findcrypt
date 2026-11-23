@@ -54,6 +54,12 @@ decisions with rationale in the architecture doc, not missing features.
   re-runs type-check, build and the full test suite automatically, so a
   broken version cannot ship.
 
+Post-mortem: the schedule above collapsed into a single release. Everything
+(Tier 1 #1–#6, the DES and secp256k1 stretch signatures, the full test
+suite) shipped together as **v0.1.0** (2026-11-23) — nothing was published
+before it, so v0.1.0 is the first and only version, and the version
+number reflects that the project is still early.
+
 ## Demo script for the evaluators (2 minutes)
 
 1. `npx findcrypt /usr/bin/node` — 12 algorithm families in ~2 seconds

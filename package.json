@@ -1,6 +1,6 @@
 {
   "name": "findcrypt",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Find cryptographic fingerprints in any file: AES S-boxes, SHA initial values, ChaCha sigma constants and more — with entropy analysis, string extraction and analyst verdicts.",
   "type": "module",
   "main": "./dist/index.cjs",

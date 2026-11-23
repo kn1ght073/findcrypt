@@ -40,7 +40,7 @@ fingerprints. findcrypt is the free, standalone answer to a classic RE tool
 ```text
 $ npx findcrypt /usr/lib/x86_64-linux-gnu/libcrypto.so.3
 
-findcrypt v0.2.0 — cryptographic fingerprint scanner
+findcrypt v0.1.0 — cryptographic fingerprint scanner
 File: libcrypto.so.3  (6,521,408 bytes)
 Entropy: 6.218 bits/byte [###################-----] — elevated — typical of machine code with some high-entropy regions
   peak window 7.955 @ 0x004dbdc2
@@ -204,6 +204,16 @@ code.
 The full development guide — suite map, fixture design, a bug-hunting
 checklist for your own machine, and the add-a-signature loop — lives in
 [TESTING.md](./TESTING.md). Quick start: `npm install && npm run build && npm test`.
+
+## Roadmap
+
+This is v0.1.0 — an early release; the honest list of what is not built yet:
+
+- PE/ELF section mapping — resolve offsets to `.text/.rodata/.data` and
+  report virtual addresses.
+- Single-byte XOR key detection — re-scan under all 256 keys to catch
+  cheaply obfuscated constants.
+- Directory scanning and `--max-matches`.
 
 ## License
 
