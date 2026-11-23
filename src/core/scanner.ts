@@ -35,23 +35,21 @@ export function scanBuffer(
   const findings: Finding[] = [];
   for (const sig of signatures) {
     let offsets: number[] = [];
-    let truncated = false;
     let matchLength = sig.lengthBytes;
 
     for (const rawHex of sig.patterns) {
       const pattern = Buffer.from(normalizeHex(rawHex), 'hex');
       if (pattern.length === 0 || pattern.length > buffer.length) continue;
-      const { found, hitCap } = indexOfAll(buffer, pattern, cap);
+      const found = indexOfAll(buffer, pattern);
       if (found.length > 0) {
         offsets = offsets.concat(found);
         if (pattern.length > matchLength) matchLength = pattern.length;
       }
-      truncated = truncated || hitCap;
     }
 
-    if (offsets.length === 0) continue;
-    offsets = [...new Set(offsets)].sort((a, b) => a - b).slice(0, cap);
-    const first = offsets[0] ?? 0;
+    const grouped = groupOffsets(offsets, cap);
+    if (grouped.offsets.length === 0) continue;
+    const first = grouped.offsets[0];
     findings.push({
       signatureId: sig.id,
       name: sig.name,
@@ -59,30 +57,31 @@ export function scanBuffer(
       category: sig.category,
       description: sig.description,
       matchLength,
-      offsets,
-      matchCount: offsets.length,
-      truncated,
+      offsets: grouped.offsets,
+      matchCount: grouped.offsets.length,
+      truncated: grouped.truncated,
       contextHex: contextHex(buffer, first, matchLength, contextLen)
     });
   }
   return findings;
 }
 
-function indexOfAll(
-  buffer: Buffer,
-  pattern: Buffer,
-  cap: number
-): { found: number[]; hitCap: boolean } {
+/** Dedup, sort ascending and cap a signature's merged offsets, flagging truncation. */
+function groupOffsets(offsets: number[], cap: number): { offsets: number[]; truncated: boolean } {
+  const unique = [...new Set(offsets)].sort((a, b) => a - b);
+  return { offsets: unique.slice(0, cap), truncated: unique.length > cap };
+}
+
+/** Every non-overlapping occurrence of one fixed pattern. */
+function indexOfAll(buffer: Buffer, pattern: Buffer): number[] {
   const found: number[] = [];
   let from = 0;
-  while (found.length < cap) {
+  for (;;) {
     const idx = buffer.indexOf(pattern, from);
-    if (idx === -1) return { found, hitCap: false };
+    if (idx === -1) return found;
     found.push(idx);
     from = idx + pattern.length;
   }
-  const more = buffer.indexOf(pattern, from);
-  return { found, hitCap: more !== -1 };
 }
 
 function contextHex(
