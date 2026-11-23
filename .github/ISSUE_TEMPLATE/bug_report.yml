@@ -1,0 +1,68 @@
+name: Bug report
+description: Something isn't working, or the scanner gave a wrong or missing result
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. False positives/negatives from real binaries are
+        especially valuable to this project. For security vulnerabilities,
+        please do **not** use this form — see [SECURITY.md](../SECURITY.md).
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part is affected?
+      options:
+        - scanner (byte-pattern matching, offsets)
+        - signature database (a constant is wrong or missing)
+        - verdicts / inference
+        - reports (terminal, JSON, Markdown)
+        - CLI / flags / exit codes
+        - fixtures / generator
+        - docs
+        - not sure
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you run, and what did you see?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps or minimal example to reproduce
+      description: >
+        A hex-dump excerpt of the region around the missed/wrong constant
+        helps most. Never attach live malware — a hex excerpt is enough.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: findcrypt version
+      placeholder: "0.1.0 (run: npx findcrypt --version)"
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Node 22, Linux x64, scanning a 12 MB PE binary"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Output or error messages
+      render: shell
