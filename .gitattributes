@@ -1,0 +1,9 @@
+# Normalize all text files to LF on every platform. The fixture drift check
+# byte-compares generated JSON against the checked-out files; a CRLF checkout
+# on Windows would make identical content look different.
+* text=auto eol=lf
+
+# Binary fixtures must never be touched by any EOL conversion.
+*.bin binary
+*.zip binary
+*.tgz binary
