@@ -1,4 +1,4 @@
-import type { ScanResult } from '../result.js';
+import type { ScanResult } from '../index.js';
 
 function hexOffset(offset: number): string {
   return '0x' + offset.toString(16).padStart(8, '0');

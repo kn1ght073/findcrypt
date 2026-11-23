@@ -1,4 +1,4 @@
-import type { ScanResult } from '../result.js';
+import type { ScanResult } from '../index.js';
 
 /** Stable, machine-readable JSON report. */
 export function toJSON(result: ScanResult): string {

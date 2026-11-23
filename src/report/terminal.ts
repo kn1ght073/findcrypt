@@ -1,4 +1,4 @@
-import type { ScanResult } from '../result.js';
+import type { ScanResult } from '../index.js';
 
 export interface TerminalOptions {
   /** Force color on/off. Default: auto-detect (TTY + !NO_COLOR). */
