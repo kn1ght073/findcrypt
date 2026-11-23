@@ -1,7 +1,6 @@
 import type { Finding, SignatureEntry } from '../signatures/types.js';
 import { Category } from '../signatures/categories.js';
 import type { EntropyReport } from '../core/entropy.js';
-import { normalizeHex } from '../core/scanner.js';
 import type { Confidence, Verdict, VerdictRule } from './types.js';
 
 const ORDER: Record<Confidence, number> = { HIGH: 0, MEDIUM: 1, LOW: 2 };
@@ -15,6 +14,8 @@ const CATEGORY_PREFIX = 'category:';
  * four of SHA-1's five; the SHA-1 hit occludes the MD5 hit at that offset.
  *
  * Matches at OTHER offsets are kept — a binary can genuinely contain both.
+ * The prefix relation is declared by `occludedBy` in the database and
+ * enforced by the data-integrity test in disambiguation.test.ts.
  */
 export function disambiguate(
   findings: Finding[],
@@ -25,8 +26,7 @@ export function disambiguate(
 
   const out: Finding[] = [];
   for (const finding of findings) {
-    const entry = entryById.get(finding.signatureId);
-    const occluderId = entry?.occludedBy;
+    const occluderId = entryById.get(finding.signatureId)?.occludedBy;
     if (!occluderId) {
       out.push(finding);
       continue;
@@ -36,18 +36,7 @@ export function disambiguate(
       out.push(finding);
       continue;
     }
-    const occluderEntry = entryById.get(occluderId);
-    const prefixRelation = (occluderEntry?.patterns ?? []).some((long) =>
-      (entry?.patterns ?? []).some(
-        (short) =>
-          normalizeHex(long).length > normalizeHex(short).length &&
-          normalizeHex(long).startsWith(normalizeHex(short))
-      )
-    );
-    let offsets = finding.offsets;
-    if (prefixRelation) {
-      offsets = offsets.filter((o) => !occluder.offsets.includes(o));
-    }
+    const offsets = finding.offsets.filter((o) => !occluder.offsets.includes(o));
     if (offsets.length > 0) {
       out.push({ ...finding, offsets, matchCount: offsets.length });
     }

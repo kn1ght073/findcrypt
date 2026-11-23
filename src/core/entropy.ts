@@ -43,13 +43,13 @@ export function shannonEntropy(buffer: Buffer): number {
 /**
  * Thresholds follow common triage practice (e.g. packer detectors):
  *  - ~8.0: encrypted / packed / random
- *  - ~7.0+: compressed streams (zlib/deflate land near 7.2-7.6)
- *  - 5.5-6.8: text-heavy or mixed structured data
+ *  - 7.0+: compressed streams (zlib/deflate land near 7.2-7.6)
+ *  - 5.5-7.0: text-heavy or mixed structured data
  */
 export function classifyEntropy(entropy: number): string {
   if (entropy < 1) return 'low — uniform or mostly-empty data';
   if (entropy < 5.5) return 'mixed — typical of text or structured data';
-  if (entropy < 6.8) return 'elevated — typical of machine code with some high-entropy regions';
+  if (entropy < 7.0) return 'elevated — typical of machine code with some high-entropy regions';
   if (entropy < 7.2) return 'high — compressed or lightly obfuscated data regions likely';
   return 'very high — encrypted, packed, or random data';
 }
