@@ -25,7 +25,6 @@
   "scripts": {
     "build": "tsup",
     "check": "tsc --noEmit",
-    "typecheck": "tsc --noEmit",
     "fixtures": "node scripts/gen-fixtures.mjs",
     "fixtures:check": "node scripts/gen-fixtures.mjs --check",
     "test": "vitest run",

@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-Test infrastructure and verification hardening — no runtime code changes.
+Test infrastructure, verification hardening and repository hygiene.
 
 ### Added
+
+- `CONTRIBUTING.md`, `SECURITY.md` and `.editorconfig` — community and
+  repository hygiene files.
 
 - `test/authenticity.test.ts` — every db.ts constant re-derived a second time,
   inside the test, from its published standard (GF(2^8) log/exp tables for
@@ -45,6 +48,8 @@ Test infrastructure and verification hardening — no runtime code changes.
 
 - Test count grew from 67 to 170 across 14 files; `npm test` still finishes
   in seconds.
+- The duplicate `typecheck` script alias was folded into `check` (CI runs
+  `npm run check`).
 
 ## [0.2.0] - 2026-11-23
 
